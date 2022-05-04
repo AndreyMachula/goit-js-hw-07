@@ -54,6 +54,7 @@ const onCreateModal = img => basicLightbox.create(`<img src="${img}" width="1280
 const onOpenModal = img => {
   modalImage = onCreateModal(img);
   modalImage.show();
+  
   console.log("Open modal");
 };
 
@@ -62,6 +63,7 @@ const onOpenModal = img => {
 
 const onKeyPress = e => {
   if (e.code === "Escape") modalImage.close();
+
   console.log("Close modal with escape");
 };
 
