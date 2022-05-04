@@ -40,7 +40,13 @@ galleryEl.addEventListener('click', onGalleryClick);
 
 // Подключение скрипта и стилей библиотеки модального окна basicLightbox. 
 
-const onCreateModal = img => basicLightbox.create(`<img src="${img}" width="1280" alt="${img}">`);
+const onCreateModal = img => basicLightbox.create(`<img src="${img}" width="1280" alt="${img}">`, {
+  closable: true,
+  onShow: (onCreateModal) => window.addEventListener("keyup", onKeyPress),
+  onClose: (onCreateModal) => window.removeEventListener("keyup", onKeyPress)
+});
+console.log(onCreateModal);
+
 
 
 // Открытие модального окна по клику на элементе галереи.
@@ -48,9 +54,7 @@ const onCreateModal = img => basicLightbox.create(`<img src="${img}" width="1280
 const onOpenModal = img => {
   modalImage = onCreateModal(img);
   modalImage.show();
-  // console.log("Open modal");
-  
-  document.addEventListener("keyup", onKeyPress);
+  console.log("Open modal");
 };
 
 
@@ -58,9 +62,7 @@ const onOpenModal = img => {
 
 const onKeyPress = e => {
   if (e.code === "Escape") modalImage.close();
-  // console.log("Close modal with escape");
-
-  document.removeEventListener("keyup", onKeyPress);
+  console.log("Close modal with escape");
 };
 
-// console.log(galleryItems);
+console.log(galleryItems);
