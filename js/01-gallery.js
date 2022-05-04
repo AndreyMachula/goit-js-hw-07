@@ -45,7 +45,7 @@ const onCreateModal = img => basicLightbox.create(`<img src="${img}" width="1280
   onShow: (onCreateModal) => window.addEventListener("keyup", onKeyPress),
   onClose: (onCreateModal) => window.removeEventListener("keyup", onKeyPress)
 });
-console.log(onCreateModal);
+
 
 
 
